@@ -1,5 +1,0 @@
-falta:
-codigos de estado
-arreglar ides
-cortar ides
-deploy
