@@ -36,12 +36,35 @@ router.post("/", async (req, res) => {
     _id: btoa(req.body.name),
     name: req.body.name,
     age: req.body.age,
-    albums: "/artists/" + btoa(req.body.name) + "/albums",
-    tracks: "/artists/" + btoa(req.body.name) + "/tracks",
-    self: "/artists/" + btoa(req.body.name),
+    albums:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" +
+      btoa(req.body.name) +
+      "/albums",
+    tracks:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" +
+      btoa(req.body.name) +
+      "/tracks",
+    self:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" + btoa(req.body.name),
   });
   await artist.save();
-  res.json(artist);
+  response = {
+    name: req.body.name,
+    age: req.body.age,
+    albums:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" +
+      btoa(req.body.name) +
+      "/albums",
+    tracks:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" +
+      btoa(req.body.name) +
+      "/tracks",
+    self:
+      "https://gentle-bayou-17296.herokuapp.com/artists/" + btoa(req.body.name),
+  };
+
+  //res.json(artist);
+  res.send(response);
 });
 
 router.post("/:artist_id/albums", async (req, res) => {
